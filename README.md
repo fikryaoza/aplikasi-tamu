@@ -1,6 +1,7 @@
 # aplikasi-tamu
 Simple Aplikasi Tamu
 
+Make sure you have Node Js v10.0.0 ++
 
 Clone this repository
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Detail Tamu</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<div class="col-md-4 col-md-offset-4 form-card">
+		<div>
+			<p>Detail Tamu : <%= detailTamu.nama %></p>
+		</div>
+		<div>
+			<center>
+				<table class="table table-hover text-center">
+					<tr>
+						<td>Nomor Identitas </td>
+						<td><%= detailTamu.identity %></td>
+					</tr>
+					<tr>
+						<td>Nama </td>
+						<td><%= detailTamu.nama %></td>
+					</tr>
+					<tr>
+						<td>Alamat </td>
+						<td><%= detailTamu.alamat %></td>
+					</tr>
+					<tr>
+						<td>Keperluan </td>
+						<td><%= detailTamu.keperluan %></td>
+					</tr>
+					<tr>
+						<td>Waktu Masuk </td>
+						<td><%= detailTamu.timeIn %></td>
+					</tr>
+					<tr>
+						<td>Durasi </td>
+						<td><%= detailTamu.duration %></td>
+					</tr>
+					<% if(status) { %>
+						<tr>
+							<td>Action</td>
+							<td><a href="/done?id=<%= detailTamu.identity %>">Selesai</a></td>
+						</tr>
+					<% } else { %>
+						<tr>
+							<td>Waktu Keluar </td>
+							<td><%= detailTamu.timeOut %></td>
+						</tr>
+					<% } %>
+				</table>
+			</center>
+		</div>
+		<div class="abc" id="LangTable">
+			<a href="/guests?status=<%= status ? 'active' : 'all-' %>">Daftar Tamu</a>
+		</div>
+	</div>
+</body>
+
+</html>

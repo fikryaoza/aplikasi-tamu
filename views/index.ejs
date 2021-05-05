@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Register App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+
+
+	<script type="text/javascript">
+		$(document).ready( () => {
+
+			$( "#form1" ).submit( (event) => {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: (response) => {
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout( () => {
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+							 if (response.status==="registered") {
+								 alert(response.message)
+         					};
+         					if (response.status=="ok") {
+								 alert(response.message)
+         					};
+         				},
+         				error: () => {
+         				}
+         			})
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="col-md-4 col-md-offset-4 form-card">
+		<div>
+			<p>Tambah Tamu
+			</p>
+		</div>
+		<div class="form-group">
+			<form id="form1" method="post">
+				<input type="number" name="identity" placeholder="No Identitas" required="" class="form-control"><br/>
+				<input type="text" name="nama" placeholder="Nama" required="" class="form-control"><br/>
+				<input type="text" name="alamat" placeholder="Alamat" required="" class="form-control"><br/>
+				<input type="text" name="keperluan" placeholder="Keperluan" required="" class="form-control"><br/>
+				<input type="submit" value="Tambah" class="btn btn-success">
+			</form>
+		</div>
+		
+		<div class="mssg bg-danger">
+			<span id="check"></span>
+		</div>
+		<div>
+			<span><a href="/guests?status=active">Tamu Aktif</a></span> |
+			<span><a href="/guests?status=all">Semua Tamu</a></span>
+		</div>
+		<div id="LangTable"><a href="/login" id="aa"></a>
+		</div>
+	</div>
+</body>
+</html>

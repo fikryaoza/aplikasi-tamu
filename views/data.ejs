@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Daftar Tamu</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<div class="col-md-4 col-md-offset-4 form-card">
+		<div>
+			<p>Daftar Tamu</p>
+		</div>
+		<div>
+			<center>
+				<table id="example" class="table table-striped table-bordered" style="width:100%">
+					<thead>
+						<tr>
+							<th>Nomor Identitas</th>
+							<th>Nama</th>
+							<th>Alamat</th>
+							<th>Keperluan</th>
+							<th>Waktu Masuk</th>
+							<%
+							if(status === 'all') { %>
+							<th>Waktu Keluar</th>
+							<% } %>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (var key in listTamu) {
+							if(status === 'all') { %>
+								<tr>
+									<td><%= listTamu[key].identity %></td>
+									<td><%= listTamu[key].nama %></td>
+									<td><%= listTamu[key].alamat %></td>
+									<td><%= listTamu[key].keperluan %></td>
+									<td><%= listTamu[key].timeIn %></td>
+									<td><%= listTamu[key].timeOut %></td>
+									<td><a href="/guests?id=<%= listTamu[key].identity %>">Detail</a></td>
+								</tr>
+						<%} else { 
+							if(listTamu[key].status) {
+							%>
+							<tr>
+								<td><%= listTamu[key].identity %></td>
+								<td><%= listTamu[key].nama %></td>
+								<td><%= listTamu[key].alamat %></td>
+								<td><%= listTamu[key].keperluan %></td>
+								<td><%= listTamu[key].timeIn %></td>
+								<td><a href="/guests?id=<%= listTamu[key].identity %>">Detail</a></td>
+							</tr>
+						<% } } 
+					} %>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Nomor Identitas</th>
+							<th>Nama</th>
+							<th>Alamat</th>
+							<th>Keperluan</th>
+							<th>Waktu Masuk</th>
+							<%
+							if(status === 'all') { %>
+							<th>Waktu Keluar</th>
+							<% } %>
+							<th>Action</th>
+						</tr>
+					</tfoot>
+				</table>
+			</center>
+		</div>
+		<div class="abc" id="LangTable">
+			<a href="/">Tambah Tamu</a>
+		</div>
+	</div>
+</body>
+
+</html>

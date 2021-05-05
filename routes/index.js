@@ -12,11 +12,11 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 	let value = myCache.get( req.body.identity );
-	if (value) res.send({status : "registered", message : "Identitas telah digunakan"})
+	if (value) return res.send({status : "registered", message : "Identitas telah digunakan"})
 	req.body.timeIn = moment().tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm:ss')
 	req.body.status = true
 	myCache.set(req.body.identity, req.body, 10000 );
-	res.send({status : "ok", message : "Sukses Tambah Tamu"});
+	return res.send({status : "ok", message : "Sukses Tambah Tamu"});
 })
 
 router.get('/guests', (req, res, next) => {

@@ -7,6 +7,8 @@ Clone this repository
 
 Run npm install
 
+Run npm start 
+
 Point to http://localhost:3000 in your browser
 
 Enjoyy

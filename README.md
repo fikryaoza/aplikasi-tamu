@@ -13,6 +13,9 @@ Point to http://localhost:3000 in your browser
 
 Enjoyy
 
+[gistfile1.txt](https://github.com/fikryaoza/aplikasi-tamu/files/6795028/gistfile1.txt)
+
+
 ![image](https://user-images.githubusercontent.com/43574461/117127234-055c5880-adc6-11eb-9943-543743ad38f4.png)
 
 ![image](https://user-images.githubusercontent.com/43574461/117127510-5d935a80-adc6-11eb-9db6-3618244495c8.png)
